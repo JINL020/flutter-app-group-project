@@ -24,7 +24,7 @@ class _SettingsPageState extends State<SettingsPage>
         title: Text("Settings page"),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Timer(Duration(seconds: 10), () {
+        onPressed: () => Timer(Duration(seconds: 1), () {
           setOffAlarm();
         }),
         child: Icon(Icons.add),
