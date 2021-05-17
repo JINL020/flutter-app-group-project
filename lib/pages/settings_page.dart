@@ -20,9 +20,7 @@ class _SettingsPageState extends State<SettingsPage>
     final setOffAlarm =
         Provider.of<AlarmMode>(context, listen: false).setOffAlarm;
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Settings page"),
-      ),
+      backgroundColor: Colors.transparent,
       floatingActionButton: FloatingActionButton(
         onPressed: () => Timer(Duration(seconds: 3), () {
           setOffAlarm();

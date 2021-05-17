@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hci_m3_app/config/colors.dart';
+import 'package:hci_m3_app/model/alarm_mode.dart';
 
 import 'package:hci_m3_app/pages/home_page.dart';
 import 'package:hci_m3_app/pages/info_page.dart';
 import 'package:hci_m3_app/pages/maps_page.dart';
 import 'package:hci_m3_app/pages/settings_page.dart';
+import 'package:provider/provider.dart';
 
 class NavigationPage extends StatefulWidget {
   NavigationPage({Key key}) : super(key: key);
@@ -21,7 +24,11 @@ class _NavigationPageState extends State<NavigationPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isAlarm = Provider.of<AlarmMode>(context).isAlarm;
     return Scaffold(
+      backgroundColor:
+          isAlarm ? AppColors.backgroundRed : AppColors.backgroundBlue,
+      resizeToAvoidBottomInset: false,
       body: PageView(
         controller: _pageController,
         children: _screens,
@@ -30,8 +37,10 @@ class _NavigationPageState extends State<NavigationPage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         iconSize: 30,
+        selectedItemColor: Colors.black,
         items: bottomNavigationItems,
         onTap: (newIndex) {
           setState(() {
@@ -60,6 +69,6 @@ var bottomNavigationItems = [
   ),
   BottomNavigationBarItem(
     icon: Icon(Icons.settings),
-    label: "Settings",
+    label: "Einstellungen",
   )
 ];

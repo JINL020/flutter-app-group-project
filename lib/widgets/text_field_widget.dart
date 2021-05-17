@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hci_m3_app/config/phone_size.dart';
 
 class TextFieldWidget extends StatefulWidget {
   @override

@@ -14,6 +14,7 @@ class _InfoPageState extends State<InfoPage>
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         title: Text("Info Page"),
       ),

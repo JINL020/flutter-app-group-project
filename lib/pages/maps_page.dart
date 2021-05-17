@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hci_m3_app/config/colors.dart';
 import 'package:hci_m3_app/model/alarm_mode.dart';
 import 'package:hci_m3_app/widgets/map_search_bar.dart';
 import 'package:hci_m3_app/widgets/map_tile.dart';
@@ -17,11 +18,10 @@ class _MapsPageState extends State<MapsPage>
   Widget build(BuildContext context) {
     // AutomaticKeepAliveClientMixin saves the screen state enabling us to switching back and forth
     super.build(context);
-    final isAlarm = Provider.of<AlarmMode>(context).isAlarm;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.transparent,
         resizeToAvoidBottomInset: false,
-        backgroundColor: isAlarm ? Colors.red : Colors.blue,
         body: ListView(
           physics: BouncingScrollPhysics(),
           children: [
@@ -37,7 +37,9 @@ class _MapsPageState extends State<MapsPage>
               ),
               MapSearchBar()
             ]),
-            Text("Lagepläne"),
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15),
+                child: Text("Lagepläne")),
             Padding(
               padding: EdgeInsets.all(10),
               child: ExpansionTile(
@@ -47,11 +49,11 @@ class _MapsPageState extends State<MapsPage>
                 backgroundColor: Colors.white,
                 collapsedBackgroundColor: Colors.white,
                 children: [
-                  MapTile(place: "UG", map: Image.asset("assets/WS_UG")),
-                  MapTile(place: "EG", map: Image.asset("assets/WS_EG")),
-                  MapTile(place: "OG1", map: Image.asset("assets/WS_OG1")),
-                  MapTile(place: "OG2", map: Image.asset("assets/WS_OG2")),
-                  MapTile(place: "OG3", map: Image.asset("assets/WS_OG3")),
+                  MapTile(place: "UG", map: Image.asset("assets/WS_UG.jpg")),
+                  MapTile(place: "EG", map: Image.asset("assets/WS_EG.jpg")),
+                  MapTile(place: "OG1", map: Image.asset("assets/WS_OG1.jpg")),
+                  MapTile(place: "OG2", map: Image.asset("assets/WS_OG2.jpg")),
+                  MapTile(place: "OG3", map: Image.asset("assets/WS_OG3.jpg")),
                 ],
               ),
             ),
@@ -64,11 +66,11 @@ class _MapsPageState extends State<MapsPage>
                 backgroundColor: Colors.white,
                 collapsedBackgroundColor: Colors.white,
                 children: [
-                  MapTile(place: "UG", map: Image.asset("assets/WS_UG")),
-                  MapTile(place: "EG", map: Image.asset("assets/WS_EG")),
-                  MapTile(place: "OG1", map: Image.asset("assets/WS_OG1")),
-                  MapTile(place: "OG2", map: Image.asset("assets/WS_OG2")),
-                  MapTile(place: "OG3", map: Image.asset("assets/WS_OG3")),
+                  MapTile(place: "UG", map: Image.asset("assets/WS_UG.jpg")),
+                  MapTile(place: "EG", map: Image.asset("assets/WS_EG.jpg")),
+                  MapTile(place: "OG1", map: Image.asset("assets/WS_OG1.jpg")),
+                  MapTile(place: "OG2", map: Image.asset("assets/WS_OG2.jpg")),
+                  MapTile(place: "OG3", map: Image.asset("assets/WS_OG3.jpg")),
                 ],
               ),
             ),

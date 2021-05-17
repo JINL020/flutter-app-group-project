@@ -1,8 +1,7 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:hci_m3_app/config/colors.dart';
 import 'package:hci_m3_app/main.dart';
 
 //Widgets can listen to AlarmMode (a ChangeNotifier object) and are notified
@@ -25,7 +24,7 @@ class AlarmMode extends ChangeNotifier {
         android: AndroidNotificationDetails(
             channel.id, channel.name, channel.description,
             importance: Importance.high,
-            color: Colors.blue,
+            color: AppColors.backgroundBlue,
             playSound: true,
             icon: '@mipmap/ic_launcher'),
       ),

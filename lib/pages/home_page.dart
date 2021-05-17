@@ -1,7 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:hci_m3_app/config/phone_size.dart';
+import 'package:hci_m3_app/config/colors.dart';
+
 import 'package:hci_m3_app/model/alarm_mode.dart';
 import 'package:hci_m3_app/widgets/status_box.dart';
 import 'package:hci_m3_app/widgets/text_field_widget.dart';
@@ -39,7 +38,7 @@ class _HomePageState extends State<HomePage> {
               hintText: "schreibe um dich mit anderen aus zu tauschen"),
         ),
       ),
-      backgroundColor: isAlarm ? Colors.red : Colors.blue,
+      backgroundColor: isAlarm ? AppColors.backgroundRed : AppColors.backgroundBlue,
     );
   }
 }*/
@@ -52,49 +51,20 @@ class HomePage extends StatelessWidget {
     var logger = Logger();
     logger.d(isAlarm);
     return Scaffold(
+      backgroundColor: Colors.transparent,
       resizeToAvoidBottomInset: false,
-      body: SingleChildScrollView(
-        physics: ClampingScrollPhysics(),
-        child: SizedBox(
-          height: PhoneSize.getHeight(context),
-          child: Column(
-            children: [
-              Padding(
-                  padding: EdgeInsets.fromLTRB(20, 50, 20, 5),
-                  child: isAlarm ? fireStatusBox() : noFireStatusBox()),
-              Expanded(
-                child: Padding(
-                    padding: EdgeInsets.fromLTRB(20, 5, 20, 20),
-                    child: TextFieldWidget()),
-              ),
-            ],
+      body: Column(
+        children: [
+          Padding(
+              padding: EdgeInsets.fromLTRB(20, 50, 20, 5),
+              child: isAlarm ? fireStatusBox() : noFireStatusBox()),
+          Expanded(
+            child: Padding(
+                padding: EdgeInsets.fromLTRB(20, 5, 20, 20),
+                child: TextFieldWidget()),
           ),
-        ),
+        ],
       ),
-      /*
-          SingleChildScrollView(
-        physics: ClampingScrollPhysics(),
-        child: ConstrainedBox(
-            constraints: BoxConstraints(
-              minWidth: PhoneSize.getWidth(context),
-              minHeight: PhoneSize.getHeight(context),
-            ),
-            child: IntrinsicHeight(
-                child: Column(
-              children: [
-                Padding(
-                    padding: EdgeInsets.fromLTRB(20, 50, 20, 5),
-                    child: isAlarm ? fireStatusBox() : noFireStatusBox()),
-                SizedBox(
-                  height: 300,
-                  child: Padding(
-                      padding: EdgeInsets.fromLTRB(20, 5, 20, 20),
-                      child: TextFieldWidget()),
-                ),
-              ],
-            ))),
-      ),*/
-      backgroundColor: isAlarm ? Colors.red : Colors.blue,
     );
   }
 }

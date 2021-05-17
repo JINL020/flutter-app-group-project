@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hci_m3_app/config/colors.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -39,11 +40,12 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final isAlarm = Provider.of<AlarmMode>(context).isAlarm;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'HCI M3 APP',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: isAlarm ? Colors.red : Colors.blue,
       ),
       home: NavigationPage(),
     );
