@@ -19,34 +19,35 @@ class StatusBox extends StatelessWidget {
     // container sizes itself to it's child
     //column takes as much space as possible
     //Text takes as much space as possible
-    print(isAlarm);
-    return Center(
+    // margin is the empty space surrounding the widget
+    // padding is the space between child and boundary
+    return AspectRatio(
+      aspectRatio: 16 / 10,
       child: Container(
-        margin: EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 20,
-        ), // empty space surrounding the widget
-        padding: EdgeInsets.all(15.0), // space between child and boundary
-        width: double.infinity,
+        padding: EdgeInsets.all(15.0),
         decoration: BoxDecoration(
-          color: AppColors.StatusBoxWhite,
+          color: AppColors.statusBoxWhite,
           shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(50),
         ),
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Align(
-                alignment: Alignment.topCenter,
-                child: isAlarm
-                    ? Image.asset(
-                        'assets/emergency_light.png',
-                      )
-                    : Image.asset('assets/sun_sunrise.png'),
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
+        width: double.infinity,
+        child: Column(
+          children: [
+            Expanded(
+              flex: 4,
+              child: isAlarm
+                  ? Image.asset(
+                      'assets/placeholder.jpg',
+                      fit: BoxFit.scaleDown,
+                    )
+                  : Image.asset(
+                      'assets/placeholder.jpg',
+                      fit: BoxFit.scaleDown,
+                    ),
+            ),
+            Expanded(
+              flex: 3,
+              child: FittedBox(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -55,9 +56,9 @@ class StatusBox extends StatelessWidget {
                     Text("Ort: $place"),
                   ],
                 ),
-              )
-            ],
-          ),
+              ),
+            ),
+          ],
         ),
       ),
     );
