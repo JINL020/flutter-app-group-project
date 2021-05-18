@@ -6,14 +6,21 @@ const BodyTextSize = 16.0;
 
 const String DefaultFontName = 'OpenSans';
 
-const Heading1TextStyle = TextStyle(
+const Heading1White = TextStyle(
   fontFamily: DefaultFontName,
   fontSize: 30,
   fontWeight: FontWeight.w800,
   color: Colors.white,
 );
 
-const Heading2TextStyle = TextStyle(
+const Heading1Black = TextStyle(
+  fontFamily: DefaultFontName,
+  fontSize: 30,
+  fontWeight: FontWeight.w800,
+  color: Colors.black,
+);
+
+const Heading2Black = TextStyle(
   fontFamily: DefaultFontName,
   fontSize: 20,
   fontWeight: FontWeight.w600,
