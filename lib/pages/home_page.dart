@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hci_m3_app/config/colors.dart';
+import 'package:hci_m3_app/config/phone_size.dart';
 
 import 'package:hci_m3_app/model/alarm_mode.dart';
 import 'package:hci_m3_app/widgets/status_box.dart';
@@ -51,16 +52,18 @@ class HomePage extends StatelessWidget {
     var logger = Logger();
     logger.d(isAlarm);
     return Scaffold(
-      backgroundColor: Colors.transparent,
       resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.transparent,
       body: Column(
         children: [
-          Padding(
-              padding: EdgeInsets.fromLTRB(20, 50, 20, 5),
-              child: isAlarm ? fireStatusBox() : noFireStatusBox()),
+          if (PhoneSize.getKeyboard(context) == 0)
+            Padding(
+                padding: EdgeInsets.fromLTRB(20, 50, 20, 10),
+                child: isAlarm ? fireStatusBox() : noFireStatusBox()),
+          if (PhoneSize.getKeyboard(context) != 0) SizedBox(height: 40),
           Expanded(
             child: Padding(
-                padding: EdgeInsets.fromLTRB(20, 5, 20, 20),
+                padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
                 child: TextFieldWidget()),
           ),
         ],

@@ -3,7 +3,7 @@ import 'package:hci_m3_app/pages/single_map_page.dart';
 
 class MapTile extends StatelessWidget {
   final String place;
-  final Image map;
+  final String map;
   const MapTile({@required this.place, @required this.map});
   @override
   Widget build(BuildContext context) {

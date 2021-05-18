@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 class SingleMapPage extends StatelessWidget {
   final String place;
-  final Image map;
+  final String map;
 
   const SingleMapPage({Key key, @required this.place, @required this.map})
       : super(key: key);
@@ -17,7 +17,7 @@ class SingleMapPage extends StatelessWidget {
       appBar: AppBar(title: Text(place)),
       backgroundColor:
           isAlarm ? AppColors.backgroundRed : AppColors.backgroundBlue,
-      body: map,
+      body: FittedBox(child: Image.asset(map)),
     );
   }
 }

@@ -40,7 +40,8 @@ class _NavigationPageState extends State<NavigationPage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         iconSize: 30,
-        selectedItemColor: Colors.black,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white.withOpacity(0.4),
         items: bottomNavigationItems,
         onTap: (newIndex) {
           setState(() {

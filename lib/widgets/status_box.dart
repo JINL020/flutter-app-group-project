@@ -52,8 +52,8 @@ class StatusBox extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text("Status: $alarmStatus"),
-                    Text("Zeitpunkt: $timeStamp"),
                     Text("Ort: $place"),
+                    Text("Zeitpunkt: $timeStamp"),
                   ],
                 ),
               ),

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:hci_m3_app/config/colors.dart';
 
 class TextFieldWidget extends StatefulWidget {
   @override
   _TextFieldWidgetState createState() => _TextFieldWidgetState();
 }
 
-class _TextFieldWidgetState extends State<TextFieldWidget> {
+class _TextFieldWidgetState extends State<TextFieldWidget>
+    with AutomaticKeepAliveClientMixin {
   final myController = TextEditingController();
 
   @override
@@ -16,10 +18,11 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.textFieldWhite,
       ),
       child: Stack(
         children: [
@@ -46,4 +49,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

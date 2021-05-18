@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hci_m3_app/config/colors.dart';
+import 'package:hci_m3_app/config/style.dart';
 import 'package:hci_m3_app/model/alarm_mode.dart';
 import 'package:hci_m3_app/widgets/map_search_bar.dart';
 import 'package:hci_m3_app/widgets/map_tile.dart';
@@ -39,7 +40,7 @@ class _MapsPageState extends State<MapsPage>
             ]),
             Padding(
                 padding: EdgeInsets.symmetric(horizontal: 15),
-                child: Text("Lagepläne")),
+                child: Text("Lagepläne", style: Heading1TextStyle)),
             Padding(
               padding: EdgeInsets.all(10),
               child: ExpansionTile(
@@ -49,11 +50,11 @@ class _MapsPageState extends State<MapsPage>
                 backgroundColor: Colors.white,
                 collapsedBackgroundColor: Colors.white,
                 children: [
-                  MapTile(place: "UG", map: Image.asset("assets/WS_UG.jpg")),
-                  MapTile(place: "EG", map: Image.asset("assets/WS_EG.jpg")),
-                  MapTile(place: "OG1", map: Image.asset("assets/WS_OG1.jpg")),
-                  MapTile(place: "OG2", map: Image.asset("assets/WS_OG2.jpg")),
-                  MapTile(place: "OG3", map: Image.asset("assets/WS_OG3.jpg")),
+                  MapTile(place: "UG", map: "assets/images/WS_UG.jpg"),
+                  MapTile(place: "EG", map: "assets/images/WS_EG.jpg"),
+                  MapTile(place: "OG1", map: "assets/images/WS_OG1.jpg"),
+                  MapTile(place: "OG2", map: "assets/images/WS_OG2.jpg"),
+                  MapTile(place: "OG3", map: "assets/images/WS_OG3.jpg"),
                 ],
               ),
             ),
@@ -66,11 +67,11 @@ class _MapsPageState extends State<MapsPage>
                 backgroundColor: Colors.white,
                 collapsedBackgroundColor: Colors.white,
                 children: [
-                  MapTile(place: "UG", map: Image.asset("assets/WS_UG.jpg")),
-                  MapTile(place: "EG", map: Image.asset("assets/WS_EG.jpg")),
-                  MapTile(place: "OG1", map: Image.asset("assets/WS_OG1.jpg")),
-                  MapTile(place: "OG2", map: Image.asset("assets/WS_OG2.jpg")),
-                  MapTile(place: "OG3", map: Image.asset("assets/WS_OG3.jpg")),
+                  MapTile(place: "UG", map: "assets/images/WS_UG.jpg"),
+                  MapTile(place: "EG", map: "assets/images/WS_EG.jpg"),
+                  MapTile(place: "OG1", map: "assets/images/WS_OG1.jpg"),
+                  MapTile(place: "OG2", map: "assets/images/WS_OG2.jpg"),
+                  MapTile(place: "OG3", map: "assets/images/WS_OG3.jpg"),
                 ],
               ),
             ),
