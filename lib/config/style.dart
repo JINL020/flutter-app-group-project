@@ -20,6 +20,13 @@ const Heading2TextStyle = TextStyle(
   color: Colors.black,
 );
 
+const Heading2White = TextStyle(
+  fontFamily: DefaultFontName,
+  fontSize: 20,
+  fontWeight: FontWeight.w600,
+  color: Colors.white,
+);
+
 const BodyTextStyle = TextStyle(
   fontFamily: DefaultFontName,
   fontSize: 17,

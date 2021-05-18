@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hci_m3_app/config/colors.dart';
+import 'package:hci_m3_app/config/style.dart';
 
 class StatusBox extends StatelessWidget {
   final bool isAlarm;
@@ -37,11 +38,11 @@ class StatusBox extends StatelessWidget {
               flex: 4,
               child: isAlarm
                   ? Image.asset(
-                      'assets/placeholder.jpg',
+                      'assets/images/logo_fire.png',
                       fit: BoxFit.scaleDown,
                     )
                   : Image.asset(
-                      'assets/placeholder.jpg',
+                      'assets/images/logo_normal.png',
                       fit: BoxFit.scaleDown,
                     ),
             ),
@@ -51,9 +52,37 @@ class StatusBox extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Status: $alarmStatus"),
-                    Text("Ort: $place"),
-                    Text("Zeitpunkt: $timeStamp"),
+                    /*
+                    RichText(
+                      text: TextSpan(
+                          text: "Status: ",
+                          style: Heading2TextStyle,
+                          children: <TextSpan>[
+                            TextSpan(text: "$alarmStatus", style: BodyTextStyle)
+                          ]),
+                    ),
+                    RichText(
+                      text: TextSpan(
+                          text: "Ort: ",
+                          style: Heading2TextStyle,
+                          children: <TextSpan>[
+                            TextSpan(text: "$place", style: BodyTextStyle)
+                          ]),
+                    ),
+                    RichText(
+                      text: TextSpan(
+                          text: "Zeitpunkt: ",
+                          style: Heading2TextStyle,
+                          children: <TextSpan>[
+                            TextSpan(text: "$timeStamp", style: BodyTextStyle)
+                          ]),
+                    ),*/
+                    Text("Status: $alarmStatus", style: Heading2TextStyle),
+                    Text("Ort: $place", style: Heading2TextStyle),
+                    Text(
+                      "Zeitpunkt: $timeStamp",
+                      style: Heading2TextStyle,
+                    ),
                   ],
                 ),
               ),

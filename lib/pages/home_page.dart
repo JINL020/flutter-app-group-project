@@ -85,7 +85,7 @@ Widget fireStatusBox() {
 Widget noFireStatusBox() {
   return StatusBox(
     isAlarm: false,
-    alarmStatus: "All Good!",
+    alarmStatus: "Alles in Ordnung :)",
     timeStamp: "--:--",
     place: "----",
   );

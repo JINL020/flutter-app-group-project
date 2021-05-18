@@ -33,7 +33,7 @@ class _MapsPageState extends State<MapsPage>
                     BoxDecoration(borderRadius: BorderRadius.circular(10)),
                 clipBehavior: Clip.hardEdge,
                 child: Image.asset(
-                  'assets/map.png',
+                  'assets/images/map.png',
                 ),
               ),
               MapSearchBar()

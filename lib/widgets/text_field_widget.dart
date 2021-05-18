@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hci_m3_app/config/colors.dart';
+import 'package:hci_m3_app/config/style.dart';
 
 class TextFieldWidget extends StatefulWidget {
   @override
@@ -27,13 +28,14 @@ class _TextFieldWidgetState extends State<TextFieldWidget>
       child: Stack(
         children: [
           TextField(
+            style: Heading2TextStyle,
             textInputAction: TextInputAction.done,
             keyboardType: TextInputType.multiline,
             maxLines: null,
             expands: true,
             controller: myController,
             decoration: InputDecoration(
-              hintText: "schreibe was",
+              hintText: "Schreibe etwas",
               border: InputBorder.none,
             ),
           ),
