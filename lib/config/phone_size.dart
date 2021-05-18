@@ -9,4 +9,8 @@ class PhoneSize {
   static getWidth(context) {
     return MediaQuery.of(context).size.width;
   }
+
+  static getKeyboard(context) {
+    return MediaQuery.of(context).viewInsets.bottom;
+  }
 }
