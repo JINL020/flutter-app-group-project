@@ -18,8 +18,8 @@ class AlarmMode extends ChangeNotifier {
     _isAlarm = !_isAlarm;
     flutterLocalNotificationsPlugin.show(
       0,
-      "Testing",
-      "How you doin ?",
+      isAlarm ? fireNotifications[0] : noFireNotifications[0],
+      isAlarm ? fireNotifications[1] : noFireNotifications[1],
       NotificationDetails(
         android: AndroidNotificationDetails(
             channel.id, channel.name, channel.description,
@@ -32,3 +32,6 @@ class AlarmMode extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+var fireNotifications = ["ALARM!", "Ort: Währinger Straße 29"];
+var noFireNotifications = ["Wieder in Ordnung :)", "Das Feuer wurde gelöscht"];
