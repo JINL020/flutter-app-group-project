@@ -1,54 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:hci_m3_app/config/colors.dart';
 import 'package:hci_m3_app/config/phone_size.dart';
 
-import 'package:hci_m3_app/model/alarm_mode.dart';
+import 'package:hci_m3_app/model/alarm_settings.dart';
 import 'package:hci_m3_app/widgets/status_box.dart';
 import 'package:hci_m3_app/widgets/text_field_widget.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
-/*
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  final myController = TextEditingController();
-
-  @override
-  void dispose() {
-    super.dispose();
-    // Clean up the controller when the widget is disposed.
-    myController.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final isAlarm = Provider.of<AlarmMode>(context).getIsAlarm();
-    //return isAlarm ? fireHomePage() : fineHomePage();
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Home Page"),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: TextField(
-          controller: myController,
-          decoration: new InputDecoration(
-              hintText: "schreibe um dich mit anderen aus zu tauschen"),
-        ),
-      ),
-      backgroundColor: isAlarm ? AppColors.backgroundRed : AppColors.backgroundBlue,
-    );
-  }
-}*/
 
 class HomePage extends StatelessWidget {
   final myController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final isAlarm = Provider.of<AlarmMode>(context).isAlarm;
+    final isAlarm = Provider.of<AlarmSettings>(context).isAlarm;
     var logger = Logger();
     logger.d(isAlarm);
     return Scaffold(

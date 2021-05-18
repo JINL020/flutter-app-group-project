@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hci_m3_app/config/colors.dart';
-import 'package:hci_m3_app/model/alarm_mode.dart';
+import 'package:hci_m3_app/model/alarm_settings.dart';
 
 import 'package:hci_m3_app/pages/home_page.dart';
 import 'package:hci_m3_app/pages/info_page.dart';
@@ -24,7 +24,7 @@ class _NavigationPageState extends State<NavigationPage> {
 
   @override
   Widget build(BuildContext context) {
-    final isAlarm = Provider.of<AlarmMode>(context).isAlarm;
+    final isAlarm = Provider.of<AlarmSettings>(context).isAlarm;
     return Scaffold(
       backgroundColor:
           isAlarm ? AppColors.backgroundRed : AppColors.backgroundBlue,

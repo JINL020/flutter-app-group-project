@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hci_m3_app/config/colors.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-import 'package:hci_m3_app/model/alarm_mode.dart';
+import 'package:hci_m3_app/model/alarm_settings.dart';
 import 'package:hci_m3_app/navigation/navigation_page.dart';
 
 // AndroidNotificationChannel for heads up notifications
@@ -22,7 +21,6 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
 
   //assign our created channel "chanel" to this
   await flutterLocalNotificationsPlugin
@@ -32,7 +30,7 @@ Future<void> main() async {
 
   //ChangeNotifierProvider so we can get our alarm state
   runApp(ChangeNotifierProvider(
-    create: (context) => AlarmMode(),
+    create: (context) => AlarmSettings(),
     child: MyApp(),
   ));
 }
@@ -40,7 +38,7 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final isAlarm = Provider.of<AlarmMode>(context).isAlarm;
+    final isAlarm = Provider.of<AlarmSettings>(context).isAlarm;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'HCI M3 APP',

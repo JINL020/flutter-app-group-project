@@ -28,7 +28,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget>
       child: Stack(
         children: [
           TextField(
-            style: Heading2TextStyle,
+            style: Heading2Black,
             textInputAction: TextInputAction.done,
             keyboardType: TextInputType.multiline,
             maxLines: null,

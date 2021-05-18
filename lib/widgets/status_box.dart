@@ -77,11 +77,11 @@ class StatusBox extends StatelessWidget {
                             TextSpan(text: "$timeStamp", style: BodyTextStyle)
                           ]),
                     ),*/
-                    Text("Status: $alarmStatus", style: Heading2TextStyle),
-                    Text("Ort: $place", style: Heading2TextStyle),
+                    Text("Status: $alarmStatus", style: Heading2Black),
+                    Text("Ort: $place", style: Heading2Black),
                     Text(
                       "Zeitpunkt: $timeStamp",
-                      style: Heading2TextStyle,
+                      style: Heading2Black,
                     ),
                   ],
                 ),

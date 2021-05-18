@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hci_m3_app/config/colors.dart';
-import 'package:hci_m3_app/model/alarm_mode.dart';
+import 'package:hci_m3_app/model/alarm_settings.dart';
 import 'package:provider/provider.dart';
 
 class SingleMapPage extends StatelessWidget {
@@ -12,12 +12,15 @@ class SingleMapPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isAlarm = Provider.of<AlarmMode>(context).isAlarm;
+    final isAlarm = Provider.of<AlarmSettings>(context).isAlarm;
     return Scaffold(
       appBar: AppBar(title: Text(place)),
       backgroundColor:
           isAlarm ? AppColors.backgroundRed : AppColors.backgroundBlue,
-      body: FittedBox(child: Image.asset(map)),
+      body: InteractiveViewer(
+        child: Image.asset(map),
+        maxScale: 4,
+      ),
     );
   }
 }
