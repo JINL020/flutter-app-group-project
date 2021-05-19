@@ -15,9 +15,11 @@ class AlarmSettings extends ChangeNotifier {
   bool _isAlarm = false;
   bool _isVibration = true;
   bool _isFlashLight = true;
+  bool _isPushNotification = true;
   bool get isAlarm => _isAlarm;
   bool get isVibration => _isVibration;
   bool get isFlashLight => _isFlashLight;
+  bool get isPushNotification => _isPushNotification;
 
   toggleVibration() {
     _isVibration = !_isVibration;
@@ -29,22 +31,29 @@ class AlarmSettings extends ChangeNotifier {
     notifyListeners();
   }
 
+  togglePushNotification() {
+    _isPushNotification = !_isPushNotification;
+    notifyListeners();
+  }
+
   // this functions sets off an alarm
   setOffAlarm() async {
     _isAlarm = !_isAlarm;
-    flutterLocalNotificationsPlugin.show(
-      0,
-      isAlarm ? fireNotifications[0] : noFireNotifications[0],
-      isAlarm ? fireNotifications[1] : noFireNotifications[1],
-      NotificationDetails(
-        android: AndroidNotificationDetails(
-            channel.id, channel.name, channel.description,
-            importance: Importance.high,
-            color: AppColors.backgroundBlue,
-            playSound: true,
-            icon: '@mipmap/ic_launcher'),
-      ),
-    );
+    if (isPushNotification) {
+      flutterLocalNotificationsPlugin.show(
+        0,
+        isAlarm ? fireNotifications[0] : noFireNotifications[0],
+        isAlarm ? fireNotifications[1] : noFireNotifications[1],
+        NotificationDetails(
+          android: AndroidNotificationDetails(
+              channel.id, channel.name, channel.description,
+              importance: Importance.high,
+              color: AppColors.backgroundBlue,
+              playSound: true,
+              icon: '@mipmap/ic_launcher'),
+        ),
+      );
+    }
     notifyListeners();
 
     bool hasVibrator = await Vibration.hasVibrator();
@@ -70,6 +79,6 @@ class AlarmSettings extends ChangeNotifier {
 
 var fireNotifications = [
   "ACHTUNG, ACHTUNG!",
-  "Feueralarm, klicke hier für mehr Informationen"
+  "Feueralarm, klicke hier für mehr Informationen."
 ];
-var noFireNotifications = ["Wieder in Ordnung!", "Das Feuer wurde gelöscht"];
+var noFireNotifications = ["Wieder in Ordnung!", "Das Feuer wurde gelöscht."];

@@ -17,7 +17,6 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage>
     with AutomaticKeepAliveClientMixin {
   // AutomaticKeepAliveClientMixin saves the screen state enabling us to switching back and forth
-  bool pushNotification = true;
   bool location = true;
   bool microfon = true;
   bool pressedAlarm = false;
@@ -27,12 +26,17 @@ class _SettingsPageState extends State<SettingsPage>
     super.build(context);
     final isVibration = Provider.of<AlarmSettings>(context).isVibration;
     final isFlashLight = Provider.of<AlarmSettings>(context).isFlashLight;
+    final isPushNotification =
+        Provider.of<AlarmSettings>(context).isPushNotification;
     final setOffAlarm =
         Provider.of<AlarmSettings>(context, listen: false).setOffAlarm;
     final toggleVibration =
         Provider.of<AlarmSettings>(context, listen: false).toggleVibration;
     final toggleFlashLight =
         Provider.of<AlarmSettings>(context, listen: false).toggleFlashLight;
+    final togglePushNotification =
+        Provider.of<AlarmSettings>(context, listen: false)
+            .togglePushNotification;
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
@@ -52,6 +56,15 @@ class _SettingsPageState extends State<SettingsPage>
                 color: AppColors.textFieldWhite,
                 child: Column(children: [
                   SwitchListTile(
+                    title: Text("Push-Benachrichtigung", style: Heading2Black),
+                    activeColor: Colors.greenAccent[700],
+                    inactiveTrackColor: Colors.grey[600],
+                    inactiveThumbColor: Colors.grey[400],
+                    value: isPushNotification,
+                    onChanged: (value) =>
+                        setState(() => togglePushNotification()),
+                  ),
+                  SwitchListTile(
                     title: Text("Vibration", style: Heading2Black),
                     activeColor: Colors.greenAccent[700],
                     inactiveTrackColor: Colors.grey[600],
@@ -66,15 +79,6 @@ class _SettingsPageState extends State<SettingsPage>
                     inactiveThumbColor: Colors.grey[400],
                     value: isFlashLight,
                     onChanged: (value) => setState(() => toggleFlashLight()),
-                  ),
-                  SwitchListTile(
-                    title: Text("Push-Benachrichtigung", style: Heading2Black),
-                    activeColor: Colors.greenAccent[700],
-                    inactiveTrackColor: Colors.grey[600],
-                    inactiveThumbColor: Colors.grey[400],
-                    value: pushNotification,
-                    onChanged: (value) =>
-                        setState(() => this.pushNotification = value),
                   ),
                 ]),
               ),
@@ -122,7 +126,7 @@ class _SettingsPageState extends State<SettingsPage>
                 padding: EdgeInsets.all(15),
                 color: AppColors.textFieldWhite,
                 child: Text(
-                  "Testen Sie die Funktionalität der App indem Sie selber einen Testalarm auslösen. Mit einen Klick auf den untenstehenden Button, wird nach 10 Sekunden ein Testalarm ausgelöst. Durch nochmaliges Klicken können Sie wieder in den Normalzustand wechseln.",
+                  "Testen Sie die Funktionalität der App indem Sie selbst einen Testalarm auslösen. Mit einen Klick auf den untenstehenden Button, wird nach 5 Sekunden ein Testalarm ausgelöst. Durch nochmaliges Klicken können Sie wieder in den Normalzustand wechseln.",
                   style: BodyTextStyle,
                 ),
               ),
@@ -132,7 +136,7 @@ class _SettingsPageState extends State<SettingsPage>
                     setState(() {
                       pressedAlarm = !pressedAlarm;
                     });
-                    Timer(Duration(seconds: 10), () async {
+                    Timer(Duration(seconds: 5), () async {
                       await setOffAlarm();
                       setState(() {
                         pressedAlarm = !pressedAlarm;

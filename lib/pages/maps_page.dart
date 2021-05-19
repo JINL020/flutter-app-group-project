@@ -41,7 +41,6 @@ class _MapsPageState extends State<MapsPage>
             Padding(
               padding: EdgeInsets.all(10),
               child: ExpansionTile(
-                initiallyExpanded: true,
                 title: Text("Währinger Straße 29"),
                 trailing: Icon(Icons.arrow_drop_down),
                 backgroundColor: Colors.white,
@@ -58,7 +57,6 @@ class _MapsPageState extends State<MapsPage>
             Padding(
               padding: EdgeInsets.all(10),
               child: ExpansionTile(
-                initiallyExpanded: true,
                 title: Text("Oskar-Morgenstern-Platz 1"),
                 trailing: Icon(Icons.arrow_drop_down),
                 backgroundColor: Colors.white,
