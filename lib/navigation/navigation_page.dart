@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hci_m3_app/config/colors.dart';
 import 'package:hci_m3_app/model/alarm_settings.dart';
+import 'package:hci_m3_app/pages/google_maps_page.dart';
 
 import 'package:hci_m3_app/pages/home_page.dart';
 import 'package:hci_m3_app/pages/info_page.dart';
@@ -19,7 +20,7 @@ class NavigationPage extends StatefulWidget {
 //to the respective index and the body is updated to the corresponding screen
 class _NavigationPageState extends State<NavigationPage> {
   int _currentIndex = 0;
-  var _screens = [HomePage(), InfoPage(), MapsPage(), SettingsPage()];
+  var _screens = [HomePage(), InfoPage(), GoogleMapsPage(), SettingsPage()];
   PageController _pageController = PageController(initialPage: 0);
 
   @override

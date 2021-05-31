@@ -35,6 +35,9 @@ dependencies:
   vibration: ^1.7.3
   flashlight: ^0.1.1
   logger: ^1.0.0
+  url_launcher: ^6.0.4
+  webview_flutter: ^2.0.8
+  sliding_up_panel: ^2.0.0+1
 
 dev_dependencies:
   flutter_test:
