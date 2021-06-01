@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hci_m3_app/my_app.dart';
 import 'package:provider/provider.dart';
-
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'package:hci_m3_app/model/alarm_settings.dart';
-import 'package:hci_m3_app/navigation/navigation_page.dart';
 
 // AndroidNotificationChannel for heads up notifications
 //because after Android 8 no notification are shown without own channel
@@ -33,19 +32,4 @@ Future<void> main() async {
     create: (context) => AlarmSettings(),
     child: MyApp(),
   ));
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final isAlarm = Provider.of<AlarmSettings>(context).isAlarm;
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'HCI M3 APP',
-      theme: ThemeData(
-        primarySwatch: isAlarm ? Colors.red : Colors.blue,
-      ),
-      home: NavigationPage(),
-    );
-  }
 }
