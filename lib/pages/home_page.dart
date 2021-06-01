@@ -16,7 +16,6 @@ class HomePage extends StatelessWidget {
     logger.d(isAlarm);
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.transparent,
       body: Column(
         children: [
           if (PhoneSize.getKeyboard(context) == 0)
