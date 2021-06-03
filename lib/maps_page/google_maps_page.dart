@@ -2,61 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:hci_m3_app/config/phone_size.dart';
 import 'package:hci_m3_app/config/style.dart';
-import 'package:hci_m3_app/pages/floorplan_page.dart';
-import 'package:hci_m3_app/widgets/map_search_bar.dart';
-import 'package:hci_m3_app/widgets/map_tile.dart';
+import 'package:hci_m3_app/maps_page/map_tile.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 const _url =
     'https://www.google.com/maps/d/embed?mid=1JJVPshZJtXkydosP2DN9XjG-1Mwv9SH-&hl=de';
 
-/*
-class GoogleMapsPage extends StatefulWidget {
-  @override
-  _GoogleMapsPageState createState() => _GoogleMapsPageState();
-}
-
-class _GoogleMapsPageState extends State<GoogleMapsPage> {
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Column(children: [
-          Padding(
-            padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-            child: AspectRatio(
-              aspectRatio: 1 / 1,
-              child: mapsWidget(context),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            alignment: Alignment.centerLeft,
-            child: Row(
-              children: [
-                Text("Lagepläne", style: Heading1White),
-              ],
-            ),
-          ),
-          Expanded(
-            child: ListView(physics: BouncingScrollPhysics(), children: [
-              Padding(
-                padding: EdgeInsets.all(10),
-                child: MapTile(place: "Währinger Straße 29"),
-              ),
-              Padding(
-                padding: EdgeInsets.all(10),
-                child: MapTile(place: "Oskar-Morgenstern-Platz 1"),
-              ),
-            ]),
-          ),
-        ]),
-      ),
-    );
-  }
-}
-*/
 Widget mapsWidget(context) {
   return ClipRect(
     child: OverflowBox(
@@ -87,10 +38,10 @@ class _GoogleMapsPageState extends State<GoogleMapsPage>
     super.build(context);
     return Scaffold(
       appBar: AppBar(
-          title: Text(
-        "Google Maps",
-        style: Heading2White,
-      )),
+        title: Text(
+          "Google Maps",
+        ),
+      ),
       body: mapsWidget(context),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () => showModalBottomSheet(

@@ -6,7 +6,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hci_m3_app/model/alarm_settings.dart';
 
 // AndroidNotificationChannel for heads up notifications
-//because after Android 8 no notification are shown without own channel
+//because after Android 8 notification are not shown without own channel
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
     'high_importance_channel', // id
     'High Importance Notifications', // title

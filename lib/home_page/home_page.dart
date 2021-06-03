@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hci_m3_app/config/phone_size.dart';
 
 import 'package:hci_m3_app/model/alarm_settings.dart';
-import 'package:hci_m3_app/widgets/status_box.dart';
-import 'package:hci_m3_app/widgets/text_field_widget.dart';
+import 'package:hci_m3_app/home_page/status_box.dart';
+import 'package:hci_m3_app/home_page/text_field_widget.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 

@@ -8,6 +8,7 @@ class MapSearchBar extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 15),
       color: Colors.white,
       child: TextField(
+        autofocus: false,
         //focusNode: myFocusNode,
         decoration: new InputDecoration(
           border: OutlineInputBorder(),

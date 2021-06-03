@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:hci_m3_app/config/colors.dart';
 import 'package:hci_m3_app/config/style.dart';
 import 'package:hci_m3_app/model/alarm_settings.dart';
-import 'package:hci_m3_app/pages/settings_popup_menu/feedback_support_page.dart';
-import 'package:hci_m3_app/pages/settings_popup_menu/license_page.dart';
+import 'package:hci_m3_app/settings_page/feedback_support_page.dart';
+import 'package:hci_m3_app/settings_page/license_page.dart';
+
 import 'package:provider/provider.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -42,7 +43,9 @@ class _SettingsPageState extends State<SettingsPage>
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Einstellungen"),
+          title: Text(
+            "Einstellungen",
+          ),
           actions: [popUpMenu()],
         ),
         body: Container(

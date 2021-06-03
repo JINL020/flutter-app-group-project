@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hci_m3_app/config/colors.dart';
 import 'package:hci_m3_app/model/alarm_settings.dart';
-import 'package:hci_m3_app/pages/google_maps_page.dart';
+import 'package:hci_m3_app/maps_page/google_maps_page.dart';
 
-import 'package:hci_m3_app/pages/home_page.dart';
-import 'package:hci_m3_app/pages/info_page.dart';
-import 'package:hci_m3_app/pages/settings_page.dart';
+import 'package:hci_m3_app/home_page/home_page.dart';
+import 'package:hci_m3_app/info_page/info_page.dart';
+import 'package:hci_m3_app/settings_page/settings_page.dart';
 import 'package:provider/provider.dart';
 
 class NavigationPage extends StatefulWidget {
@@ -25,20 +25,38 @@ class _NavigationPageState extends State<NavigationPage> {
   @override
   Widget build(BuildContext context) {
     final isAlarm = Provider.of<AlarmSettings>(context).isAlarm;
+    final primaryColor =
+        isAlarm ? AppColors.backgroundRed : AppColors.backgroundBlue;
     return Scaffold(
-      backgroundColor:
-          isAlarm ? AppColors.backgroundRed : AppColors.backgroundBlue,
+      backgroundColor: primaryColor,
       resizeToAvoidBottomInset: false,
-      body: PageView(
-        controller: _pageController,
-        children: _screens,
-        physics: NeverScrollableScrollPhysics(),
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Colors.black.withOpacity(0.25),
+                  Colors.white.withOpacity(0.2),
+                ],
+                stops: [0.5, 1],
+                begin: FractionalOffset(0.5, 0.2),
+                end: FractionalOffset(0.6, 0.9),
+              ),
+            ),
+          ),
+          PageView(
+            controller: _pageController,
+            children: _screens,
+            physics: NeverScrollableScrollPhysics(),
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+        backgroundColor: primaryColor,
+        elevation: 8.0,
         iconSize: 30,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white.withOpacity(0.4),

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hci_m3_app/config/style.dart';
 import 'package:provider/provider.dart';
 
 import 'config/colors.dart';
 import 'model/alarm_settings.dart';
-import 'navigation/navigation_page.dart';
+import 'navigation_page.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -13,10 +14,10 @@ class MyApp extends StatelessWidget {
         isAlarm ? AppColors.backgroundRed : AppColors.backgroundBlue;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'HCI M3 APP',
+      title: 'SICHA',
       theme: ThemeData(
         primarySwatch: isAlarm ? Colors.pink : Colors.blue,
-        scaffoldBackgroundColor: primaryColor,
+        scaffoldBackgroundColor: Colors.transparent,
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(primary: primaryColor),
         ),
@@ -24,6 +25,14 @@ class MyApp extends StatelessWidget {
             FloatingActionButtonThemeData(backgroundColor: primaryColor),
         appBarTheme: AppBarTheme(
           color: primaryColor,
+          textTheme: TextTheme(headline6: Heading1White),
+        ),
+        dividerTheme: DividerThemeData(
+          color: Colors.white70,
+          space: 40,
+          thickness: 0.8,
+          indent: 10,
+          endIndent: 10,
         ),
       ),
       home: NavigationPage(),
