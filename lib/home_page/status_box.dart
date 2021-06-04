@@ -19,12 +19,10 @@ class StatusBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.all(0),
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: AppColors.statusBoxWhite,
-        borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(40),
-        ),
       ),
       height: PhoneSize.getHeight(context) * 0.3,
       child: Row(

@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: ListView(
-          //physics: NeverScrollableScrollPhysics(),
+          reverse: true,
           children: [
             TextFieldWidget(),
             SizedBox(height: 10),
@@ -35,7 +35,6 @@ class HomePage extends StatelessWidget {
                     fireLocation: "----",
                   ),
           ],
-          reverse: true,
         ),
       ),
     );
