@@ -27,10 +27,3 @@ class FloorPlanPage extends StatelessWidget {
     );
   }
 }
-
-/*onTap: () => Navigator.of(context).push(MaterialPageRoute(
-        builder: (BuildContext context) => SingleMapPage(
-          place: this.place,
-          map: this.map,
-        ),
-      )*/
