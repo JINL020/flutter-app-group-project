@@ -80,3 +80,93 @@
 //   @override
 //   bool get wantKeepAlive => true;
 // }
+import 'package:flutter/material.dart';
+import 'package:hci_m3_app/config/phone_size.dart';
+import 'package:webview_flutter/webview_flutter.dart';
+
+const _url =
+    'https://www.google.com/maps/d/embed?mid=1JJVPshZJtXkydosP2DN9XjG-1Mwv9SH-&hl=de';
+
+class MapsPage extends StatefulWidget {
+  MapsPage({Key key}) : super(key: key);
+
+  @override
+  _MapsPageState createState() => _MapsPageState();
+}
+
+class _MapsPageState extends State<MapsPage>
+    with AutomaticKeepAliveClientMixin {
+  // AutomaticKeepAliveClientMixin saves the screen state enabling us to switching back and forth
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    return DefaultTabController(
+      initialIndex: 0,
+      length: 2,
+      child: SafeArea(
+        child: Scaffold(
+          body: Column(children: [
+            buildTabbar(context),
+            Expanded(
+              child: TabBarView(children: [
+                mapsWidget(context),
+                mapsWidget(context),
+              ]),
+            ),
+          ]),
+        ),
+      ),
+    );
+  }
+
+  Widget mapsWidget(context) {
+    return ClipRect(
+      child: OverflowBox(
+        maxWidth: double.infinity,
+        maxHeight: double.infinity,
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          height: PhoneSize.getHeight(context),
+          width: PhoneSize.getWidth(context),
+          child: WebView(
+            initialUrl: _url,
+            javascriptMode: JavascriptMode.unrestricted,
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  bool get wantKeepAlive => true;
+}
+
+Widget buildTabbar(context) {
+  return Container(
+    color: Theme.of(context).appBarTheme.color,
+    child: TabBar(
+      tabs: [
+        Tab(text: "Google Maps"),
+        Tab(text: "Lagepläne"),
+      ],
+    ),
+  );
+}
+
+Widget mapsWidget(context) {
+  return ClipRect(
+    child: OverflowBox(
+      maxWidth: double.infinity,
+      maxHeight: double.infinity,
+      alignment: Alignment.bottomCenter,
+      child: Container(
+        height: PhoneSize.getHeight(context),
+        width: PhoneSize.getWidth(context),
+        child: WebView(
+          initialUrl: _url,
+          javascriptMode: JavascriptMode.unrestricted,
+        ),
+      ),
+    ),
+  );
+}

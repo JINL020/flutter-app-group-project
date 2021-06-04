@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:hci_m3_app/config/phone_size.dart';
-import 'package:hci_m3_app/config/style.dart';
-import 'package:hci_m3_app/maps_page/map_tile.dart';
+import 'package:hci_m3_app/maps_page/slide_up_panel.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 const _url =
@@ -47,7 +46,7 @@ class _GoogleMapsPageState extends State<GoogleMapsPage>
         onPressed: () => showModalBottomSheet(
             context: context,
             isScrollControlled: true,
-            builder: (context) => buildSheet(),
+            builder: (context) => SlidingUpPanel(),
             backgroundColor: Colors.transparent),
         label: const Text('Lagepläne'),
         icon: const Icon(Icons.location_on),
@@ -57,45 +56,4 @@ class _GoogleMapsPageState extends State<GoogleMapsPage>
 
   @override
   bool get wantKeepAlive => true;
-
-  Widget buildSheet() {
-    return DraggableScrollableSheet(
-      initialChildSize: 0.7,
-      maxChildSize: 0.7,
-      minChildSize: 0.7,
-      builder: (_, controller) => Container(
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.9),
-          borderRadius: BorderRadius.vertical(
-            top: Radius.circular(20),
-          ),
-        ),
-        child: Column(children: [
-          Icon(Icons.drag_handle),
-          Container(
-            alignment: Alignment.topLeft,
-            child: Text("Lagepläne", style: Heading1Black),
-          ),
-          SizedBox(height: 5),
-          Expanded(
-            child: ListView(
-              controller: controller,
-              children: [
-                MapTile(place: "Währinger Straße 29"),
-                MapTile(place: "Oskar-Morgenstern-Platz 1"),
-                SizedBox(height: 10),
-              ],
-            ),
-          ),
-          Center(
-            child: ElevatedButton(
-              child: Text("schließen"),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-          )
-        ]),
-      ),
-    );
-  }
 }
