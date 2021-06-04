@@ -1,12 +1,11 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hci_m3_app/config/colors.dart';
-import 'package:hci_m3_app/config/style.dart';
+
+import 'package:hci_m3_app/info_page/buttonTextbox.dart';
 import 'package:hci_m3_app/model/alarm_settings.dart';
 import 'package:hci_m3_app/settings_page/feedback_support_page.dart';
 import 'package:hci_m3_app/settings_page/license_page.dart';
+import 'package:hci_m3_app/settings_page/setting_options.dart';
 
 import 'package:provider/provider.dart';
 
@@ -20,17 +19,17 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage>
     with AutomaticKeepAliveClientMixin {
   // AutomaticKeepAliveClientMixin saves the screen state enabling us to switching back and forth
-  bool location = true;
-  bool microfon = true;
-  bool pressedAlarm = false;
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    final pressedAlarm = Provider.of<AlarmSettings>(context).pressedAlarm;
     final isVibration = Provider.of<AlarmSettings>(context).isVibration;
     final isFlashLight = Provider.of<AlarmSettings>(context).isFlashLight;
     final isPushNotification =
         Provider.of<AlarmSettings>(context).isPushNotification;
+    final isLocation = Provider.of<AlarmSettings>(context).isLocation;
+    final isMicrofon = Provider.of<AlarmSettings>(context).isMicrophone;
     final setOffAlarm =
         Provider.of<AlarmSettings>(context, listen: false).setOffAlarm;
     final toggleVibration =
@@ -40,122 +39,55 @@ class _SettingsPageState extends State<SettingsPage>
     final togglePushNotification =
         Provider.of<AlarmSettings>(context, listen: false)
             .togglePushNotification;
+    final toggleLocation =
+        Provider.of<AlarmSettings>(context, listen: false).toggleLocation;
+    final toggleMicrophone =
+        Provider.of<AlarmSettings>(context, listen: false).toggleMicrophone;
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            "Einstellungen",
-          ),
+          title: Text("Einstellungen"),
           actions: [popUpMenu()],
         ),
-        body: Container(
-          padding: EdgeInsets.only(left: 16, top: 25, right: 16),
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: ListView(
-              children: [
-                Text("Art der Alarm-Benachrichtigung:", style: Heading2White),
-                Container(
-                  margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                  color: AppColors.textFieldWhite,
-                  child: Column(children: [
-                    SwitchListTile(
-                      title:
-                          Text("Push-Benachrichtigung", style: Heading2Black),
-                      activeColor: Colors.greenAccent[700],
-                      inactiveTrackColor: Colors.grey[600],
-                      inactiveThumbColor: Colors.grey[400],
-                      value: isPushNotification,
-                      onChanged: (value) =>
-                          setState(() => togglePushNotification()),
-                    ),
-                    SwitchListTile(
-                      title: Text("Vibration", style: Heading2Black),
-                      activeColor: Colors.greenAccent[700],
-                      inactiveTrackColor: Colors.grey[600],
-                      inactiveThumbColor: Colors.grey[400],
-                      value: isVibration,
-                      onChanged: (value) => setState(() => toggleVibration()),
-                    ),
-                    SwitchListTile(
-                      title: Text("Kamera Blitz", style: Heading2Black),
-                      activeColor: Colors.greenAccent[700],
-                      inactiveTrackColor: Colors.grey[600],
-                      inactiveThumbColor: Colors.grey[400],
-                      value: isFlashLight,
-                      onChanged: (value) => setState(() => toggleFlashLight()),
-                    ),
-                  ]),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                Text("Zugriff erlauben auf:", style: Heading2White),
-                Container(
-                  margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                  color: AppColors.textFieldWhite,
-                  child: Column(children: [
-                    SwitchListTile(
-                      title: Text("Standortinformation", style: Heading2Black),
-                      activeColor: Colors.greenAccent[700],
-                      inactiveTrackColor: Colors.grey[600],
-                      inactiveThumbColor: Colors.grey[400],
-                      value: location,
-                      onChanged: (value) =>
-                          setState(() => this.location = value),
-                    ),
-                    SwitchListTile(
-                      title: Text("Mikrofon", style: Heading2Black),
-                      activeColor: Colors.greenAccent[700],
-                      inactiveTrackColor: Colors.grey[600],
-                      inactiveThumbColor: Colors.grey[400],
-                      value: microfon,
-                      onChanged: (value) =>
-                          setState(() => this.microfon = value),
-                    ),
-                  ]),
-                ),
-                SizedBox(height: 30),
-                Text("Warnung!", style: Heading2White),
-                Container(
-                  margin: EdgeInsets.fromLTRB(0, 5, 0, 10),
-                  padding: EdgeInsets.all(15),
-                  color: AppColors.textFieldWhite,
-                  child: Text(
-                    "Die integrierte Kartenfunktion kann ohne Erlaubnis der Standordinformationen und ohne Internet nicht genutz werden. Ohne Zugriff auf das Mikrofon, kann die App nur durch eine konstante Internetverbindung operieren. Das Deaktivieren dieser Optionen kann dadurch zu einer verminderten Sicherheit führen!",
-                    style: BodyTextStyle,
-                  ),
-                ),
-                SizedBox(height: 30),
-                Text("Probealarm testen", style: Heading2White),
-                Container(
-                  margin: EdgeInsets.fromLTRB(0, 5, 0, 10),
-                  padding: EdgeInsets.all(15),
-                  color: AppColors.textFieldWhite,
-                  child: Text(
-                    "Testen Sie die Funktionalität der App indem Sie selbst einen Testalarm auslösen. Mit einen Klick auf den untenstehenden Button, wird nach 5 Sekunden ein Testalarm ausgelöst. Durch nochmaliges Klicken können Sie wieder in den Normalzustand wechseln.",
-                    style: BodyTextStyle,
-                  ),
-                ),
-                if (!pressedAlarm)
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        pressedAlarm = !pressedAlarm;
-                      });
-                      Timer(Duration(seconds: 5), () async {
-                        await setOffAlarm();
-                        setState(() {
-                          pressedAlarm = !pressedAlarm;
-                        });
-                      });
-                    },
-                    child: Icon(Icons.warning),
-                    style: ButtonStyle(),
-                  ),
+        body: ListView(
+          children: [
+            SizedBox(height: 20),
+            SettingOtions(
+              title: "Art der Alarm-Benachrichtigung:",
+              tileNames: ["Push-Benachrichtigung", "Vibration", "Kamera Blitz"],
+              tileValues: [isPushNotification, isVibration, isFlashLight],
+              tileActions: [
+                togglePushNotification,
+                toggleVibration,
+                toggleFlashLight
               ],
             ),
-          ),
+            Divider(),
+            SettingOtions(
+              title: "Zugriff erlauben auf:",
+              tileNames: ["Standortinformation", "Mikrofon"],
+              tileValues: [isLocation, isMicrofon],
+              tileActions: [toggleLocation, toggleMicrophone],
+            ),
+            Divider(),
+            ButtonTextBoxWidget(
+                title: "Warnung!",
+                content: [
+                  "Die App kann ohne Zugriff auf das Mikrofon nur durch eine konstante Internetverbindung operieren. Um die integrierte Kartenfunktion nützen zu können müssen Sie außerdem Ihre Standordinformationen und Internet aktivieren. Das Deaktivieren dieser Optionen kann zu einer verminderten Sicherheit führen!",
+                ],
+                buttonName: null,
+                action: null),
+            Divider(),
+            ButtonTextBoxWidget(
+              title: "Probealarm testen",
+              content: [
+                "Testen Sie die Funktionalität der App indem Sie selbst einen Testalarm auslösen. Mit einen Klick auf den untenstehenden Button, wird nach 5 Sekunden ein Testalarm ausgelöst. Durch nochmaliges Klicken können Sie wieder in den Normalzustand wechseln."
+              ],
+              buttonName: pressedAlarm ? null : "Jetzt testen",
+              action: pressedAlarm ? null : setOffAlarm,
+            ),
+          ],
         ),
       ),
     );

@@ -6,7 +6,7 @@ class ButtonTextBoxWidget extends StatelessWidget {
   final String title;
   final List<String> content;
   final String buttonName;
-  final Widget action;
+  final dynamic Function() action;
   const ButtonTextBoxWidget({
     Key key,
     @required this.title,
@@ -19,8 +19,9 @@ class ButtonTextBoxWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+        Container(
+            margin: EdgeInsets.fromLTRB(20, 0, 10, 0),
+            alignment: Alignment.centerLeft,
             child: Text(title, style: Heading2White)),
         Container(
           width: double.infinity,
@@ -41,12 +42,7 @@ class ButtonTextBoxWidget extends StatelessWidget {
               if (buttonName != null)
                 Center(
                   child: ElevatedButton(
-                    onPressed: () {
-                      if (action != null)
-                        return Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => action),
-                        );
-                    },
+                    onPressed: () => action(),
                     child: Text(buttonName),
                   ),
                 ),

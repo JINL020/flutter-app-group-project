@@ -29,22 +29,10 @@ class _NavigationPageState extends State<NavigationPage> {
         isAlarm ? AppColors.backgroundRed : AppColors.backgroundBlue;
     return Scaffold(
       backgroundColor: primaryColor,
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       body: Stack(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.black.withOpacity(0.25),
-                  Colors.white.withOpacity(0.2),
-                ],
-                stops: [0.5, 1],
-                begin: FractionalOffset(0.5, 0.2),
-                end: FractionalOffset(0.6, 0.9),
-              ),
-            ),
-          ),
+          AppColors.backgroundGradient,
           PageView(
             controller: _pageController,
             children: _screens,
@@ -55,7 +43,6 @@ class _NavigationPageState extends State<NavigationPage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: primaryColor,
         elevation: 8.0,
         iconSize: 30,
         selectedItemColor: Colors.white,

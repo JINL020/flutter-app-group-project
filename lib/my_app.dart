@@ -34,6 +34,8 @@ class MyApp extends StatelessWidget {
           indent: 10,
           endIndent: 10,
         ),
+        bottomNavigationBarTheme:
+            BottomNavigationBarThemeData(backgroundColor: primaryColor),
       ),
       home: NavigationPage(),
     );
