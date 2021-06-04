@@ -27,7 +27,7 @@ class ButtonTextBoxWidget extends StatelessWidget {
           margin: EdgeInsets.all(10),
           padding: EdgeInsets.all(15),
           decoration: BoxDecoration(
-            color: AppColors.statusBoxWhite,
+            color: AppColors.textBoxWhite,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Column(
