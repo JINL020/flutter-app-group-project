@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hci_m3_app/config/phone_size.dart';
 import 'package:hci_m3_app/config/style.dart';
+import 'package:keyboard_visibility/keyboard_visibility.dart';
 
 class TextFieldWidget extends StatefulWidget {
   @override
@@ -10,10 +11,24 @@ class TextFieldWidget extends StatefulWidget {
 class _TextFieldWidgetState extends State<TextFieldWidget>
     with AutomaticKeepAliveClientMixin {
   final textController = TextEditingController();
+  final myFocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    KeyboardVisibilityNotification().addNewListener(
+      onChange: (bool visible) {
+        if (!visible) {
+          myFocusNode.unfocus();
+        }
+      },
+    );
+  }
 
   @override
   void dispose() {
     textController.dispose();
+    myFocusNode.dispose();
     super.dispose();
   }
 
@@ -35,6 +50,8 @@ class _TextFieldWidgetState extends State<TextFieldWidget>
             style: Heading1Black,
             textInputAction: TextInputAction.done,
             keyboardType: TextInputType.multiline,
+            autofocus: false,
+            focusNode: myFocusNode,
             maxLines: null,
             expands: true,
             controller: textController,

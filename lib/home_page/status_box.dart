@@ -55,14 +55,14 @@ class StatusBox extends StatelessWidget {
   }
 
   Widget getStatusInfo(bool isAlarm) {
-    var textStyle = Heading2Black;
+    var textStyle = Heading1Black;
     return FittedBox(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(message, style: textStyle),
           if (isAlarm) Text("Ort: " + fireLocation, style: textStyle),
-          if (isAlarm) Text("Zeit" + timeStamp, style: textStyle),
+          if (isAlarm) Text("ausgelöst um " + timeStamp, style: textStyle),
         ],
       ),
     );

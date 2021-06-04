@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
                     isAlarm: isAlarm,
                     message: "Feueralarm!",
                     timeStamp: "00:00",
-                    fireLocation: "Locaation",
+                    fireLocation: "Währinger Straße 29",
                   )
                 : StatusBox(
                     isAlarm: isAlarm,
