@@ -25,8 +25,18 @@ class _NavigationPageState extends State<NavigationPage> {
   @override
   Widget build(BuildContext context) {
     final isAlarm = Provider.of<AlarmSettings>(context).isAlarm;
+    final backToHome = Provider.of<AlarmSettings>(context).backToHome;
+    final toggleBackHome = Provider.of<AlarmSettings>(context).toogleBackToHome;
     final primaryColor =
         isAlarm ? AppColors.backgroundRed : AppColors.backgroundBlue;
+    if (backToHome) {
+      setState(() {
+        _selectedIndex = 0;
+      });
+      _pageController.jumpToPage(_selectedIndex);
+      toggleBackHome();
+    }
+
     return Scaffold(
       backgroundColor: primaryColor,
       resizeToAvoidBottomInset: true,

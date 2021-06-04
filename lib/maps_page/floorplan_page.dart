@@ -16,13 +16,13 @@ class FloorPlanPage extends StatelessWidget {
       appBar: AppBar(title: Text(floor)),
       backgroundColor:
           isAlarm ? AppColors.backgroundRed : AppColors.backgroundBlue,
-      body: ListView(
-        children: maps.map((floor) {
-          return InteractiveViewer(
-            maxScale: 4,
-            child: Image.asset(floor),
-          );
-        }).toList(),
+      body: InteractiveViewer(
+        maxScale: 4,
+        child: ListView(
+          children: maps.map((floor) {
+            return Image.asset(floor);
+          }).toList(),
+        ),
       ),
     );
   }

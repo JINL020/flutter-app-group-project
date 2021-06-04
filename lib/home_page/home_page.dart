@@ -42,23 +42,4 @@ class HomePage extends StatelessWidget {
   }
 }
 
-/*
-Widget fireStatusBox() {
-  return StatusBox(
-    isAlarm: true,
-    alarmStatus: "Feueralarm!",
-    timeStamp:
-        DateTime.now().hour.toString() + ":" + DateTime.now().minute.toString(),
-    place: "Währinger Straße 29",
-  );
-}
-
-Widget noFireStatusBox() {
-  return StatusBox(
-    isAlarm: false,
-    alarmStatus: "Alles in Ordnung :)",
-    timeStamp: "--:--",
-    place: "----",
-  );
-}
-*/
+//DateTime.now().hour.toString() + ":" + DateTime.now().minute.toString(),

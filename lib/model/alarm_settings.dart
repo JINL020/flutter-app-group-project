@@ -19,6 +19,7 @@ class AlarmSettings extends ChangeNotifier {
   bool _isPushNotification = true;
   bool _isLocation = true;
   bool _isMicrophone = true;
+  bool _backToHome = false;
   bool get isAlarm => _isAlarm;
   bool get pressedAlarm => _pressedAlarm;
   bool get isVibration => _isVibration;
@@ -26,6 +27,7 @@ class AlarmSettings extends ChangeNotifier {
   bool get isPushNotification => _isPushNotification;
   bool get isLocation => _isLocation;
   bool get isMicrophone => _isMicrophone;
+  bool get backToHome => _backToHome;
 
   toggleVibration() {
     _isVibration = !_isVibration;
@@ -52,6 +54,10 @@ class AlarmSettings extends ChangeNotifier {
     notifyListeners();
   }
 
+  toogleBackToHome() {
+    _backToHome = !_backToHome;
+  }
+
   // this functions sets off an alarm
   setOffAlarm() async {
     _pressedAlarm = !_pressedAlarm;
@@ -59,6 +65,7 @@ class AlarmSettings extends ChangeNotifier {
     Timer(Duration(seconds: 5), () async {
       {
         _isAlarm = !_isAlarm;
+        _backToHome = !_backToHome;
         if (isPushNotification) {
           flutterLocalNotificationsPlugin.show(
             0,
