@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hci_m3_app/config/colors.dart';
+import 'package:hci_m3_app/config/phone_size.dart';
 import 'package:hci_m3_app/config/style.dart';
 
 class TextFieldWidget extends StatefulWidget {
@@ -9,51 +9,53 @@ class TextFieldWidget extends StatefulWidget {
 
 class _TextFieldWidgetState extends State<TextFieldWidget>
     with AutomaticKeepAliveClientMixin {
-  final myController = TextEditingController();
+  final textController = TextEditingController();
 
   @override
   void dispose() {
-    myController.dispose();
+    textController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return Stack(
-      children: [
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-          decoration: BoxDecoration(
-            color: AppColors.textFieldWhite,
-          ),
-          child: Container(
-            margin: EdgeInsets.fromLTRB(0, 20, 0, 0),
-            child: TextField(
-              style: Heading2Black,
-              textInputAction: TextInputAction.done,
-              keyboardType: TextInputType.multiline,
-              maxLines: null,
-              expands: true,
-              controller: myController,
-              decoration: InputDecoration(
-                hintMaxLines: 10,
-                hintText:
-                    "Schreibe etwas und zeige es einer hörenden Person um mit ihr zu kommunizieren",
-                border: InputBorder.none,
-              ),
+    return Container(
+      margin: EdgeInsets.all(10),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.8),
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+      ),
+      //-115 is the bottom navbar
+      height: (PhoneSize.getHeight(context) * 0.7) - 115,
+      child: Stack(
+        children: [
+          TextField(
+            style: Heading1Black,
+            textInputAction: TextInputAction.done,
+            keyboardType: TextInputType.multiline,
+            maxLines: null,
+            expands: true,
+            controller: textController,
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              hintMaxLines: 10,
+              hintText:
+                  "Schreibe etwas und zeige es einer hörenden Person um mit ihr zu kommunizieren",
             ),
           ),
-        ),
-        Align(
-          alignment: Alignment.topRight,
-          child: IconButton(
-            icon: Icon(Icons.close),
-            onPressed: () => myController.clear(),
-            color: Colors.grey[700],
-          ),
-        )
-      ],
+          Align(
+            alignment: Alignment.bottomRight,
+            child: IconButton(
+              icon: Icon(Icons.delete),
+              iconSize: 28,
+              onPressed: () => textController.clear(),
+              color: Colors.green[800],
+            ),
+          )
+        ],
+      ),
     );
   }
 
