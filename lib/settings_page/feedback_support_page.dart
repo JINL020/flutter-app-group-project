@@ -25,8 +25,8 @@ class FeedBackSupportPage extends StatelessWidget {
               ButtonTextBoxWidget(
                 title: "Das Team",
                 content: [
-                  "Das Team von Sicha setzt sich aus folgenden Personen zusammen:",
-                  "   - Adi Waller",
+                  "Das Team Sicha setzt sich aus folgenden Personen zusammen:",
+                  "   - Addi Walla",
                   "   - Jin-Jin Lee",
                   ""
                 ],

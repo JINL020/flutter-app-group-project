@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hci_m3_app/info_page/buttonTextbox.dart';
+import 'package:hci_m3_app/pdf_Api/pdf_api.dart';
 
 class VerhaltenPage extends StatelessWidget {
   const VerhaltenPage({Key key}) : super(key: key);
@@ -56,7 +57,11 @@ class VerhaltenPage extends StatelessWidget {
           title: "Brandschutzordnung der Uni Wien",
           content: [],
           buttonName: "Kicke hier",
-          action: null,
+          action: () async {
+            final path = 'assets/Brandschutzordnung.pdf';
+            final file = await PDFApi.loadAsset(path);
+            PDFApi.openPDF(context, file);
+          },
         ),
       ],
     );

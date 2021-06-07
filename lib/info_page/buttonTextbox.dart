@@ -6,7 +6,7 @@ class ButtonTextBoxWidget extends StatelessWidget {
   final String title;
   final List<String> content;
   final String buttonName;
-  final dynamic Function() action;
+  final VoidCallback action;
   const ButtonTextBoxWidget({
     Key key,
     @required this.title,

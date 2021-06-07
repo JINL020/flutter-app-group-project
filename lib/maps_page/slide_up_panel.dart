@@ -31,6 +31,16 @@ class SlidingUpPanel extends StatelessWidget {
             child: ListView(
               children: [
                 MapTile(
+                  place: "Oskar-Morgenstern-Platz 1",
+                  maps: [
+                    "assets/images/OMP_UG.png",
+                    "assets/images/OMP_EG.png",
+                    "assets/images/OMP_OG1.png",
+                    "assets/images/OMP_OG2.png",
+                    "assets/images/OMP_OG3.png",
+                  ],
+                ),
+                MapTile(
                   place: "Währinger Straße 29",
                   //floors: ["UG", "EG", "OG1", "OG2", "OG3", "DG"],
                   maps: [
@@ -42,14 +52,34 @@ class SlidingUpPanel extends StatelessWidget {
                   ],
                 ),
                 MapTile(
-                  place: "Oskar-Morgenstern-Platz 1",
-                  maps: [
-                    "assets/images/OMP_UG.png",
-                    "assets/images/OMP_EG.png",
-                    "assets/images/OMP_OG1.png",
-                    "assets/images/OMP_OG2.png",
-                    "assets/images/OMP_OG3.png",
-                  ],
+                  place: "Gebäude 1",
+                  //floors: ["UG", "EG", "OG1", "OG2", "OG3", "DG"],
+                  maps: [],
+                ),
+                MapTile(
+                  place: "Gebäude 2",
+                  //floors: ["UG", "EG", "OG1", "OG2", "OG3", "DG"],
+                  maps: [],
+                ),
+                MapTile(
+                  place: "Gebäude 3",
+                  //floors: ["UG", "EG", "OG1", "OG2", "OG3", "DG"],
+                  maps: [],
+                ),
+                MapTile(
+                  place: "Gebäude 4",
+                  //floors: ["UG", "EG", "OG1", "OG2", "OG3", "DG"],
+                  maps: [],
+                ),
+                MapTile(
+                  place: "Gebäude 5",
+                  //floors: ["UG", "EG", "OG1", "OG2", "OG3", "DG"],
+                  maps: [],
+                ),
+                MapTile(
+                  place: "Gebäude 6",
+                  //floors: ["UG", "EG", "OG1", "OG2", "OG3", "DG"],
+                  maps: [],
                 ),
                 SizedBox(height: 10),
               ],
