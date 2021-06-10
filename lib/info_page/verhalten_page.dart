@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hci_m3_app/info_page/buttonTextbox.dart';
-import 'package:hci_m3_app/pdf_Api/pdf_api.dart';
+import 'package:hci_m3_app/info_page/pdf_api.dart';
 
 class VerhaltenPage extends StatelessWidget {
   const VerhaltenPage({Key key}) : super(key: key);

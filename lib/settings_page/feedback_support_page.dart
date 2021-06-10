@@ -26,7 +26,7 @@ class FeedBackSupportPage extends StatelessWidget {
                 title: "Das Team",
                 content: [
                   "Das Team Sicha setzt sich aus folgenden Personen zusammen:",
-                  "   - Addi Walla",
+                  "   - Addi Wala",
                   "   - Jin-Jin Lee",
                   ""
                 ],
