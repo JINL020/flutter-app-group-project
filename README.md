@@ -1,5 +1,4 @@
 # "Sicha!" – The Development of a Fire Alarm App for Deaf University Attendees
-A project for the Human-Computer Interaction course at the University of Vienna 2021SS.
 
 Approximately 10.000 people in Austria are deaf and up to one million are hard of hearing or suffer from some form of hearing impairment.
 
