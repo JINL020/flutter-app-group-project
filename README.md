@@ -10,7 +10,7 @@ app.
 
 Our project therefore analyzed solutions and
 over the span of a semester continuously developed and improved an app
-to better the safety of all university attendees.
+to better the safety for all university attendees.
 
 ![image](https://user-images.githubusercontent.com/63373832/179515320-aeabf816-d0b8-45db-9567-93583bc096a2.png)
 
