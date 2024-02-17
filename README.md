@@ -8,8 +8,8 @@ It does not offer a safe fire alarm alternative
 for hearing impaired students, neither locally nor in the form of an
 app. 
 
-Our project therefore analyzed solutions and
-over the span of a semester continuously developed and improved an app
+Our project analyzed existing solutions and
+over the span of a semester continuously developed an app
 to better the safety for all university attendees.
 
 ![image](https://user-images.githubusercontent.com/63373832/179515320-aeabf816-d0b8-45db-9567-93583bc096a2.png)
